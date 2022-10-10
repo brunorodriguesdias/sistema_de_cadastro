@@ -1,11 +1,15 @@
 from tkinter import *
 from tkinter import ttk
 
-cor1 = "#feffff" #branco
+root =Tk()
+root.title('Sistema de cliente')
+root.geometry('900x500')
 
-janela =Tk()
-janela.title('Cadastro de cliente')
-janela.geometry('900x500')
-janela.config(bg=cor1)
+usuario = Entry()
+usuario.grid(row=0, column=0)
+senha = Entry()
+senha.grid(row=1, column=0)
 
-janela.mainloop()
+Button(text='Login').grid(row=2, column=0)
+
+root.mainloop()
