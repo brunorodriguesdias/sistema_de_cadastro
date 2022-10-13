@@ -1,5 +1,6 @@
 from tkinter import *
 import tkinter as tk
+import tela_cadastro
 import mysql.connector
 
 banco = mysql.connector.connect(host='localhost', user='root',passwd='', database='lista_clientes')
