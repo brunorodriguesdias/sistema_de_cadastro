@@ -118,7 +118,7 @@ class Tela_login():
         usuario_correto = 'admin'
         senha_correta = '1234'
 
-        if (self.usuario.get() == 'admin' and self.senha.get() == '1234'):
+        if (self.usuario.get() == usuario_correto and self.senha.get() == senha_correta):
             print('Usuario logado')
             self.top.destroy()
             self.sistema_cadastro()

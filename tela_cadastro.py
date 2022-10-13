@@ -1,6 +1,6 @@
 from tkinter import *
 import tkinter as tk
-
+import tela_consulta
 
 def cadastro():
 
@@ -304,6 +304,7 @@ def cadastro():
             self.consulta_cadastro.configure(highlightcolor="black")
             self.consulta_cadastro.configure(pady="0")
             self.consulta_cadastro.configure(text='''Quero consultar um cadastro''')
+            self.consulta_cadastro.configure(command=self.sistema_consulta)
 
             self.botao_cadastrar = tk.Button(self.top)
             self.botao_cadastrar.place(relx=0.617, rely=0.444, height=34, width=137)
@@ -355,5 +356,9 @@ def cadastro():
                 self.entry_cnpj.config(state='normal')
                 self.entry_inscricao.config(state='normal')
                 self.entry_cpf.config(state='disable')
+
+        def sistema_consulta(self):
+            self.top.destroy()
+            tela_consulta.tela_consulta()
 
     Tela_cadastro()
