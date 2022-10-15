@@ -338,10 +338,12 @@ def cadastro():
             self.botao_novo_cadastro.configure(highlightcolor="black")
             self.botao_novo_cadastro.configure(pady="0")
             self.botao_novo_cadastro.configure(text='''Novo Cadastro''')
+            self.botao_novo_cadastro.configure(command=self.novo_cadastro)
 
             top.mainloop()
 
         def tipo_cliente(self):
+            global tipo
             tipo = self.selectedButton.get()
             if (tipo == 1):
                 self.entry_nome.config(state='normal')
@@ -366,6 +368,25 @@ def cadastro():
             self.top.destroy()
             tela_consulta.tela_consulta()
 
+        def novo_cadastro(self):
+            self.entry_nome.delete(0, END)
+            self.entry_cpf.delete(0, END)
+            self.entry_nascimento.delete(0, END)
+            self.entry_telefone.delete(0, END)
+            self.entry_email.delete(0, END)
+            self.entry_cep.delete(0, END)
+            self.entry_cnpj.delete(0, END)
+            self.entry_inscricao.delete(0, END)
+
+            self.entry_nome.config(state='disable')
+            self.entry_cpf.config(state='disable')
+            self.entry_nascimento.config(state='disable')
+            self.entry_telefone.config(state='disable')
+            self.entry_email.config(state='disable')
+            self.entry_cep.config(state='disable')
+            self.entry_cnpj.config(state='disable')
+            self.entry_inscricao.config(state='disable')
+
         def cadastrar_cliente(self):
             global salva_nome
             global salva_cpf
@@ -385,12 +406,35 @@ def cadastro():
             salva_cnpj = self.entry_cnpj.get()
             salva_inscricao = self.entry_inscricao.get()
 
+            if (tipo == 1):
+                dados = (str(salva_nome), str(salva_cpf), str(salva_nascimento), str(salva_telefone), str(salva_email),
+                         str(salva_cep))
+                insert_banco = 'INSERT INTO clientes (nome, cpf, nascimento, telefone, email, cep) VALUES (%s, %s, %s, %s, %s, %s)'
+                cursor.execute(insert_banco, dados)
+                banco.commit()
 
-            dados = (str(salva_nome), str(salva_cpf), str(salva_nascimento), str(salva_telefone), str(salva_email), str(salva_cep), str(salva_cnpj), str(salva_inscricao))
+                self.entry_nome.config(state='disable')
+                self.entry_cpf.config(state='disable')
+                self.entry_nascimento.config(state='disable')
+                self.entry_telefone.config(state='disable')
+                self.entry_email.config(state='disable')
+                self.entry_cep.config(state='disable')
+
+            elif (tipo == 2):
+                dados = (str(salva_nome), str(salva_nascimento), str(salva_telefone), str(salva_email),
+                         str(salva_cep), str(salva_cnpj), str(salva_inscricao))
+                insert_banco = 'INSERT INTO clientes_juridicos (nome, nascimento, telefone, email, cep, cnpj, inscricao) VALUES (%s, %s, %s, %s, %s, %s, %s)'
+                cursor.execute(insert_banco, dados)
+                banco.commit()
+
+                self.entry_nome.config(state='disable')
+                self.entry_nascimento.config(state='disable')
+                self.entry_telefone.config(state='disable')
+                self.entry_email.config(state='disable')
+                self.entry_cep.config(state='disable')
+                self.entry_cnpj.config(state='disable')
+                self.entry_inscricao.config(state='disable')
 
 
-            insert_banco = 'INSERT INTO clientes (nome, cpf, nascimento, telefone, email, cep, cnpj, incricao) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)'
-            cursor.execute(insert_banco, dados)
-            banco.commit()
 
     Tela_cadastro()
