@@ -1,6 +1,10 @@
 from tkinter import *
 import tkinter as tk
 import tela_consulta
+import mysql.connector
+
+banco = mysql.connector.connect(host='localhost', user='root', passwd='', database='lista_clientes')
+cursor = banco.cursor()
 
 def cadastro():
 
@@ -319,6 +323,7 @@ def cadastro():
             self.botao_cadastrar.configure(highlightcolor="black")
             self.botao_cadastrar.configure(pady="0")
             self.botao_cadastrar.configure(text='''Cadastrar''')
+            self.botao_cadastrar.configure(command=self.cadastrar_cliente)
 
             self.botao_novo_cadastro = tk.Button(self.top)
             self.botao_novo_cadastro.place(relx=0.533, rely=0.622, height=54, width=237)
@@ -360,5 +365,32 @@ def cadastro():
         def sistema_consulta(self):
             self.top.destroy()
             tela_consulta.tela_consulta()
+
+        def cadastrar_cliente(self):
+            global salva_nome
+            global salva_cpf
+            global salva_nascimento
+            global salva_telefone
+            global salva_email
+            global salva_cep
+            global salva_cnpj
+            global salva_inscricao
+
+            salva_nome = self.entry_nome.get()
+            salva_cpf = self.entry_cpf.get()
+            salva_nascimento = self.entry_nascimento.get()
+            salva_telefone = self.entry_telefone.get()
+            salva_email = self.entry_email.get()
+            salva_cep = self.entry_cep.get()
+            salva_cnpj = self.entry_cnpj.get()
+            salva_inscricao = self.entry_inscricao.get()
+
+
+            dados = (str(salva_nome), str(salva_cpf), str(salva_nascimento), str(salva_telefone), str(salva_email), str(salva_cep), str(salva_cnpj), str(salva_inscricao))
+
+
+            insert_banco = 'INSERT INTO clientes (nome, cpf, nascimento, telefone, email, cep, cnpj, incricao) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)'
+            cursor.execute(insert_banco, dados)
+            banco.commit()
 
     Tela_cadastro()
