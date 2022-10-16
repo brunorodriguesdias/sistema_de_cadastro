@@ -3,7 +3,7 @@ import tkinter as tk
 import tela_consulta
 import mysql.connector
 
-banco = mysql.connector.connect(host='localhost', user='root', passwd='', database='lista_clientes')
+banco = mysql.connector.connect(host='localhost', user='root', passwd='', database='clientes')
 cursor = banco.cursor()
 
 def cadastro():
@@ -409,7 +409,7 @@ def cadastro():
             if (tipo == 1):
                 dados = (str(salva_nome), str(salva_cpf), str(salva_nascimento), str(salva_telefone), str(salva_email),
                          str(salva_cep))
-                insert_banco = 'INSERT INTO clientes (nome, cpf, nascimento, telefone, email, cep) VALUES (%s, %s, %s, %s, %s, %s)'
+                insert_banco = 'INSERT INTO cliente_fisicos (nome, cpf, nascimento, telefone, email, cep) VALUES (%s, %s, %s, %s, %s, %s)'
                 cursor.execute(insert_banco, dados)
                 banco.commit()
 
@@ -423,7 +423,7 @@ def cadastro():
             elif (tipo == 2):
                 dados = (str(salva_nome), str(salva_nascimento), str(salva_telefone), str(salva_email),
                          str(salva_cep), str(salva_cnpj), str(salva_inscricao))
-                insert_banco = 'INSERT INTO clientes_juridicos (nome, nascimento, telefone, email, cep, cnpj, inscricao) VALUES (%s, %s, %s, %s, %s, %s, %s)'
+                insert_banco = 'INSERT INTO cliente_juridicos (nome, nascimento, telefone, email, cep, cnpj, inscricao) VALUES (%s, %s, %s, %s, %s, %s, %s)'
                 cursor.execute(insert_banco, dados)
                 banco.commit()
 

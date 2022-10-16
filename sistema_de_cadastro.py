@@ -2,7 +2,6 @@ from tkinter import *
 import tkinter as tk
 import tela_cadastro
 
-
 _bgcolor = '#d9d9d9'  # X11 color: 'gray85'
 _fgcolor = '#000000'  # X11 color: 'black'
 _compcolor = 'gray40' # X11 color: #666666

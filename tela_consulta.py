@@ -3,7 +3,7 @@ import tkinter as tk
 import tela_cadastro
 import mysql.connector
 
-banco = mysql.connector.connect(host='localhost', user='root', passwd='', database='lista_clientes')
+banco = mysql.connector.connect(host='localhost', user='root', passwd='', database='clientes')
 cursor = banco.cursor()
 
 def tela_consulta():
@@ -150,6 +150,7 @@ def tela_consulta():
             self.botao_nova_consulta.configure(highlightcolor="black")
             self.botao_nova_consulta.configure(pady="0")
             self.botao_nova_consulta.configure(text='''Nova consulta''')
+            self.botao_nova_consulta.configure(command=self.nova_consulta)
 
             self.botao_retorna_para_cadastro = tk.Button(self.top)
             self.botao_retorna_para_cadastro.place(relx=0.533, rely=0.622, height=54, width=237)
@@ -310,10 +311,81 @@ def tela_consulta():
             
         def consulta_cadastro(self):
             chave_consulta = self.entry_cpf_cnpj.get()
-            consulta = f"SELECT nome FROM clientes WHERE cpf = {chave_consulta}"
+            consulta = f"SELECT nome FROM cliente_fisicos WHERE cpf = {chave_consulta}"
             cursor.execute(consulta)
             nome = cursor.fetchone()
-            print(nome)
             self.label_retorno_nome.configure(text=nome)
+
+            consulta = f"SELECT cpf FROM cliente_fisicos WHERE cpf = {chave_consulta}"
+            cursor.execute(consulta)
+            cpf = cursor.fetchone()
+            self.label_retorno_cpf.configure(text=cpf)
+
+            consulta = f"SELECT nascimento FROM cliente_fisicos WHERE cpf = {chave_consulta}"
+            cursor.execute(consulta)
+            nascimento = cursor.fetchone()
+            self.label_retorno_nascimento.configure(text=nascimento)
+
+            consulta = f"SELECT telefone FROM cliente_fisicos WHERE cpf = {chave_consulta}"
+            cursor.execute(consulta)
+            telefone = cursor.fetchone()
+            self.label_retorno_telefone.configure(text=telefone)
+
+            consulta = f"SELECT email FROM cliente_fisicos WHERE cpf = {chave_consulta}"
+            cursor.execute(consulta)
+            email = cursor.fetchone()
+            self.label_retorno_email.configure(text=email)
+
+            consulta = f"SELECT cep FROM cliente_fisicos WHERE cpf = {chave_consulta}"
+            cursor.execute(consulta)
+            cep = cursor.fetchone()
+            self.label_retorno_cep.configure(text=cep)
+
+            consulta = f"SELECT nome FROM cliente_juridicos WHERE cnpj = {chave_consulta}"
+            cursor.execute(consulta)
+            nome = cursor.fetchone()
+            self.label_retorno_nome.configure(text=nome)
+
+            consulta = f"SELECT nascimento FROM cliente_juridicos WHERE cnpj = {chave_consulta}"
+            cursor.execute(consulta)
+            nascimento = cursor.fetchone()
+            self.label_retorno_nascimento.configure(text=nascimento)
+
+            consulta = f"SELECT telefone FROM cliente_juridicos WHERE cnpj = {chave_consulta}"
+            cursor.execute(consulta)
+            telefone = cursor.fetchone()
+            self.label_retorno_telefone.configure(text=telefone)
+
+            consulta = f"SELECT email FROM cliente_juridicos WHERE cnpj = {chave_consulta}"
+            cursor.execute(consulta)
+            email = cursor.fetchone()
+            self.label_retorno_email.configure(text=email)
+
+            consulta = f"SELECT cep FROM cliente_juridicos WHERE cnpj = {chave_consulta}"
+            cursor.execute(consulta)
+            cep = cursor.fetchone()
+            self.label_retorno_cep.configure(text=cep)
+
+            consulta = f"SELECT cnpj FROM cliente_juridicos WHERE cnpj = {chave_consulta}"
+            cursor.execute(consulta)
+            cnpj = cursor.fetchone()
+            self.label_retorno_cnpj.configure(text=cnpj)
+
+            consulta = f"SELECT inscricao FROM cliente_juridicos WHERE cnpj = {chave_consulta}"
+            cursor.execute(consulta)
+            inscricao = cursor.fetchone()
+            self.label_retorno_inscricao.configure(text=inscricao)
+
+        def nova_consulta(self):
+            self.entry_cpf_cnpj.delete(0, END)
+            self.label_retorno_nome.configure(text='')
+            self.label_retorno_cpf.configure(text='')
+            self.label_retorno_nascimento.configure(text='')
+            self.label_retorno_telefone.configure(text='')
+            self.label_retorno_email.configure(text='')
+            self.label_retorno_cep.configure(text='')
+            self.label_retorno_cnpj.configure(text='')
+            self.label_retorno_inscricao.configure(text='')
+
 
     Tela_consulta_cliente()
