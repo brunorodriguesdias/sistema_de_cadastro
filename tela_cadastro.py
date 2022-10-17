@@ -369,6 +369,15 @@ def cadastro():
             tela_consulta.tela_consulta()
 
         def novo_cadastro(self):
+            self.entry_nome.config(state='normal')
+            self.entry_cpf.config(state='normal')
+            self.entry_nascimento.config(state='normal')
+            self.entry_telefone.config(state='normal')
+            self.entry_email.config(state='normal')
+            self.entry_cep.config(state='normal')
+            self.entry_cnpj.config(state='normal')
+            self.entry_inscricao.config(state='normal')
+
             self.entry_nome.delete(0, END)
             self.entry_cpf.delete(0, END)
             self.entry_nascimento.delete(0, END)
