@@ -22,6 +22,7 @@ Busquei tentar manter o padrão de orientação a objeto que também é uma cois
 <img src="https://github.com/brunorodriguesdias/sistema_de_cadastro/blob/master/tela_consulta.jpg"><br>
 
 <h2>Como visualizar o projeto</h2>
+Caso ainda não tenha a linguagem instalada, pode fazer o download neste <a href="https://www.python.org/downloads/release/python-385/">link</a>.<br>
 Abra o arquivo sistema_de_cadastro.py<br>
 Login é admin e a senha é 1234, use essas credenciais para acesso ao sistema.<br>
 Utilizei o pycharm para desenvolver e rodar o projeto,<br>
