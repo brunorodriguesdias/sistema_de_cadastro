@@ -1,5 +1,9 @@
 <h1 align="center">Sistema de cadastro com Python e tkinter</h1>
-
+<h1 align="center">Aviso Por Favor Lembre de Sair do Seu GitHub</h1>
+<h1 align="center">Aviso Por Favor Lembre de Sair do Seu GitHub</h1>
+<h1 align="center">Aviso Por Favor Lembre de Sair do Seu GitHub</h1>
+<h1 align="center">Aviso Por Favor Lembre de Sair do Seu GitHub</h1>
+<h1 align="center">Aviso Por Favor Lembre de Sair do Seu GitHub</h1>
 
 
 <h2>Bem vindo!</h2>
